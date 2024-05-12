@@ -1,0 +1,2510 @@
+{
+	"info": {
+		"_postman_id": "059c6cda-ec28-4dbc-bf3e-545fd3f2cf27",
+		"name": "QuestQuiver_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26663463"
+	},
+	"item": [
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "/v1/userlogin/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "/userlogin",
+							"path": [
+								"userlogin"
+							]
+						},
+						"description": "returns access token and refresh token  \nadd email and password as json raw in body"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/settings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/settings",
+							"path": [
+								"settings"
+							]
+						},
+						"description": "returns user settings list"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/loginhistory/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/loginhistory/?page=1&email=\"EMAIL\"&limit=\"LIMIT\"&sort_by=\"DESC/ASC\"",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"loginhistory",
+								""
+							],
+							"query": [
+								{
+									"key": "timezone_value",
+									"value": "Asia%2FJerusalem",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "email",
+									"value": "\"EMAIL\""
+								},
+								{
+									"key": "limit",
+									"value": "\"LIMIT\""
+								},
+								{
+									"key": "sort_by",
+									"value": "\"DESC/ASC\""
+								}
+							]
+						},
+						"description": "Returns users login history.\r\n\r\nQuery params:\r\n\r\nEmail - Mandatory (Email of login)\r\nTimezone_value - Not Mandatory (default:etc+0)\r\nSort_by - Mandatory (default:2)\r\nLimit - Mandatory (default:20)\r\nPage - Mandatory (default:1)"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/refreshlogin/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/refreshlogin",
+							"path": [
+								"refreshlogin"
+							]
+						},
+						"description": "refresh token url"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/limits/\"USER_ID\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/limits/\"USER_ID\"",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"limits",
+								"\"USER_ID\""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "telegram",
+			"item": [
+				{
+					"name": "/v1/tg/statistics/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tg/statistics/",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"statistics",
+								""
+							]
+						},
+						"description": "Get telegram statistics"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/tg/chats/\"search=string\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tg/chats/?search=hamas&{{full_answer}}={{full_answer}}&limit=2&offset=0",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"chats",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "hamas"
+								},
+								{
+									"key": "{{full_answer}}",
+									"value": "{{full_answer}}"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Search for telegram chats / channels"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/tg/near/\"TG_ID\"/?limit=\"LIMIT\" ",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzE0NTY5MTkzLCJqdGkiOiIzZTc4OGMzYy02YTMxLTRiYTEtYWU0ZC1iMGIzMDg1ZGExNTEiLCJuYmYiOjE3MTQ1NjkxOTMsInR5cGUiOiJhY2Nlc3MiLCJpZGVudGl0eSI6MTcyLCJleHAiOjE3MTQ1NjkzNzMsInJvbGUiOm51bGwsInBhc3N3b3JkX2V4cGlyZWQiOmZhbHNlLCJvcmdhbmlzYXRpb25faWQiOm51bGwsImlzcyI6InRnY3AifQ.OH-luBjG5JYS5CNVk2tMjDpdmwDE8VBM6GXs9crsxoNgatnBqMa90FO6Plx06gEC5RO89Y_pzRK-KoSb1Wt1NSCT5mzN-Hg7l0mh3scPAQtUx5Jw7Ya4NezioJp245b1I31VCTL7J1XhdbTB7Hf8PjIDUF59xCAEy190rGW0LZP-EtY7cpThWmBBFL4yS1Lr8pitAOYbMEuo9EgVIgEqJbCzerLTo8OpxH_2Uo4mMwDLn4wFQDjonKaTmkVPfrIWbE0rd3qHnafkxU1Qix3KGq9NtmQ1tl9jz1V8UFZl9HXi7eK2_bSsyX1UUxlLHqeTo4Krt1gLUtqIO0a_2fw3ca7H-gWPsGC9sQSz4ESjJPviruojHk6Eic11LDEa-4cTc7n1GqCAelHr0Kc7jsX32Qxj5LaR_fqZcVLdO0_MvDKALJAaxoZUS2G4iCJl4PS-joqZYer4yzuiw1ivF8ToQmlyaKW5iKnRzqGoS_572ygwZZHDa_2zBS_rYz98tfGapzHH2ENaWenyQPhhQa-MRG-m9i3z3VupxfJLW9fTCk1owAnLj9PSHg4Wfz6XYiPuSLMmINcOHgg7RTKlDUBjOaJvWh9O5K_fQy-sHCjLnZB0LCJIr9gaDAE7Al_Tdppy46xqkRe4U1WVyzVWtJ8MX0VA3Y1-ttiV5NAyCrUIKFE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/tg/near/50/?limit=3",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"tg",
+								"near",
+								"50",
+								""
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Get nearby users of a spesific user"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/tg/chats/\"CHAT_ID\"/statistics/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tg/chats/810617/statistics/",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"chats",
+								"810617",
+								"statistics",
+								""
+							]
+						},
+						"description": "Get chat's statistics"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/tg/chats/\"CHAT_ID\"/countries/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tg/chats/810617/countries",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"chats",
+								"810617",
+								"countries"
+							]
+						},
+						"description": "Get country list with number of users from the country in this chat"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/tg/messages/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tg/messages/?search=hamas&limit=23",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"messages",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "hamas"
+								},
+								{
+									"key": "limit",
+									"value": "23"
+								}
+							]
+						},
+						"description": "search for tg msgs  \n  \nUser parameters:\n\nlimit = 'limit of lines you wish to get'\n\noffsec = 0\n\nsearch = 'search string'"
+					},
+					"response": []
+				},
+				{
+					"name": "tg/map/chats",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Created At</th>\r",
+									"        <th>Timestamp Unix</th>\r",
+									"        <th>User ID</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response}}\r",
+									"        <tr>\r",
+									"            <td>{{0.created_at}}</td>\r",
+									"            <td>{{0.timestamp_unix}}</td>\r",
+									"            <td>{{0.user_id}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    var res = pm.response.json();\r",
+									"    return {response: res};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Y}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://f380-147-235-207-105.ngrok-free.app/tg/map/chats?bbox=30.627277165616874,34.66598510742188,31.474352783178166,35.09857177734376",
+							"protocol": "https",
+							"host": [
+								"f380-147-235-207-105",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"tg",
+								"map",
+								"chats"
+							],
+							"query": [
+								{
+									"key": "bbox",
+									"value": "30.627277165616874,34.66598510742188,31.474352783178166,35.09857177734376"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/users/realtime/\"TG_ID\"",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Created At</th>\r",
+									"        <th>User ID</th>\r",
+									"        <th>Timestamp</th>\r",
+									"        <th>Timestamp Unix</th>\r",
+									"        <th>Type</th>\r",
+									"        <th>Latitude</th>\r",
+									"        <th>Longitude</th>\r",
+									"        <th>Distance</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response.coords}}\r",
+									"        <tr>\r",
+									"            <td>{{created_at}}</td>\r",
+									"            <td>{{user_id}}</td>\r",
+									"            <td>{{timestamp}}</td>\r",
+									"            <td>{{timestamp_unix}}</td>\r",
+									"            <td>{{type}}</td>\r",
+									"            <td>{{coord.0.lat}}</td>\r",
+									"            <td>{{coord.0.lng}}</td>\r",
+									"            <td>{{coord.0.distance}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()}\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{Y}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://f380-147-235-207-105.ngrok-free.app/tg/users/realtime/\"TG_ID\"",
+							"protocol": "https",
+							"host": [
+								"f380-147-235-207-105",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"tg",
+								"users",
+								"realtime",
+								"\"TG_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/users/realtime",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Created At</th>\r",
+									"        <th>User ID</th>\r",
+									"        <th>Timestamp</th>\r",
+									"        <th>Timestamp Unix</th>\r",
+									"        <th>Type</th>\r",
+									"        <th>Latitude</th>\r",
+									"        <th>Longitude</th>\r",
+									"        <th>Distance</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response.coords}}\r",
+									"        <tr>\r",
+									"            <td>{{created_at}}</td>\r",
+									"            <td>{{user_id}}</td>\r",
+									"            <td>{{timestamp}}</td>\r",
+									"            <td>{{timestamp_unix}}</td>\r",
+									"            <td>{{type}}</td>\r",
+									"            <td>{{coord.0.lat}}</td>\r",
+									"            <td>{{coord.0.lng}}</td>\r",
+									"            <td>{{coord.0.distance}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()}\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "tg/users/realtime",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"users",
+								"realtime"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tg/map/geoclusters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzE0NTYxNjA4LCJqdGkiOiI2YzM0NjE4MC1jNjdiLTQwN2UtYjA5Yi0zOTY1YmIyMDZiNzciLCJuYmYiOjE3MTQ1NjE2MDgsInR5cGUiOiJhY2Nlc3MiLCJpZGVudGl0eSI6MTcyLCJleHAiOjE3MTQ1NjE3ODgsInJvbGUiOm51bGwsInBhc3N3b3JkX2V4cGlyZWQiOmZhbHNlLCJvcmdhbmlzYXRpb25faWQiOm51bGwsImlzcyI6InRnY3AifQ.EMYhQ93tOAU1oNy5ijaaKhwqeoFOt55905CR4lHSHg6wr5DdT9lMa4Rv4mm2Q9_4_esM4-FAQpKJH_zKVBxf7mSsj8SeZsWJKwjZ45aLUqh32EQCM-DX6u8UaRxY6cQXXMZ-VrUtW7-ocqK51TicKf1yEYWhLfmlZeK6qM8amNalP3mOs0-YQfcxtTJ2lQtp1jsKzpaM08uyK2OEtvvdQEjFGvfIDsbs02O72fpWRSdnXln6LuxH-Y0N9C26OogNsBBSY9Gyrr51dI8PhT6rB_w7NoGsXG0P8_nT_VbrfiA2vtVQ_FYgsncm2Hyo8WJ8SZo3VWNr4VuI5USkzHvjQkGbYdtJMlPJzsL513FJTtUbnsJLX-iPngHqMiOh_OG5LGwuWeydE_1RiOmpaOMgUDOuE2bWGD_33GUDTP7HkTN9xWsbttIdY27SQwXhQ5zxD2octBESAMIvw0QzSX8fY7JsFQ-bu4IQGgtV_zkycptDGB2IapDv0Z4TpcI5HFv-G9lJvOK0sO6w7ZULPgaUnWedK8TaKXWXDolr8wNmY1n487NcFAkfuv-hysgLn03Tr6YRl1jY-pnuM6ufNqBu2guVePQhIghaW5FlqrUZX1QTb_5JPMQgOOgdj07hhlsQ2nYVKgvr7Goox0p-zeRHQFGCZXzWEeXXdtw8Pe6zhJ8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/tg/map/geoclusters",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"tg",
+								"map",
+								"geoclusters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/users?country_code=",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "/tg/users?country_code=IL",
+							"path": [
+								"tg",
+								"users"
+							],
+							"query": [
+								{
+									"key": "country_code",
+									"value": "IL"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/user/\"TGID\"/phone/exists",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "tg/user/\"tg_id\"/phone/exists",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"user",
+								"\"tg_id\"",
+								"phone",
+								"exists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/user/\"TGID\"/phone #phone resolve",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "tg/user/TGID/phone",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"user",
+								"TGID",
+								"phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/tasks (CREATE_A_TASK)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"description\":\"\",\"priority\":true,\"collect_media\":false,\"sync_period\":null,\"task\":\"\",\"type\":\"\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "tg/tasks",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/tasks(/task_id)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "tg/tasks(/task_id)",
+							"host": [
+								"tg"
+							],
+							"path": [
+								"tasks(",
+								"task_id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/tasks/geo_points",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/tg/tasks/geo_points",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"tg",
+								"tasks",
+								"geo_points"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tg/linksto/\"channel_id\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "linksto/\"channel_id\"",
+							"host": [
+								"linksto"
+							],
+							"path": [
+								"\"channel_id\""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "leaks",
+			"item": [
+				{
+					"name": "/v1/mxleaks/\"email\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "mxleaks/\"EMAIL\"",
+							"host": [
+								"mxleaks"
+							],
+							"path": [
+								"\"EMAIL\""
+							]
+						},
+						"description": "get email leaks"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/loginleaks/\"username\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "loginleaks/\"USERNAME\"",
+							"host": [
+								"loginleaks"
+							],
+							"path": [
+								"\"USERNAME\""
+							]
+						},
+						"description": "get login leaks"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/domainleaks/\"DOMAIN\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "domainleaks/\"DOMAIN.COM\"",
+							"host": [
+								"domainleaks"
+							],
+							"path": [
+								"\"DOMAIN.COM\""
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "get domain leaks"
+					},
+					"response": []
+				}
+			],
+			"description": "Leaked data"
+		},
+		{
+			"name": "global search",
+			"item": [
+				{
+					"name": "/v1/services/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "/services",
+							"path": [
+								"services"
+							]
+						},
+						"description": "Returns all available services from global search and their search methods(ID/PHONE/EMAIL/NAME/NICKNAME)."
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/phone/\"service\"/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "phone/telegram/?search=\"MSISDN\"&full_answer=true",
+							"host": [
+								"phone"
+							],
+							"path": [
+								"telegram",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "\"MSISDN\""
+								},
+								{
+									"key": "full_answer",
+									"value": "true"
+								}
+							]
+						},
+						"description": "search in services for MSISDN"
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/email/search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "email/?search=\"EMAIL\"&{{full_answer}}={{full_answer}}",
+							"host": [
+								"email"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "\"EMAIL\""
+								},
+								{
+									"key": "{{full_answer}}",
+									"value": "{{full_answer}}"
+								}
+							]
+						},
+						"description": "search for user accounts by email"
+					},
+					"response": []
+				},
+				{
+					"name": "nickname/\"SERVICE\"/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "nickname/\"SERVICE\"/?search=\"NICKNAME\"",
+							"host": [
+								"nickname"
+							],
+							"path": [
+								"\"SERVICE\"",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "\"NICKNAME\""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Whatsapp",
+			"item": [
+				{
+					"name": "/v1/wa/healthcheck",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/healthcheck",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "v1/wa/stats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/stats",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"stats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/wa/groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/groups?limit=20&offset=0&order_by=subject&order_type=asc",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "order_by",
+									"value": "subject"
+								},
+								{
+									"key": "order_type",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/wa/groups{chat_id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>ID</th>",
+									"        <th>Owner Phone</th>",
+									"        <th>Subject</th>",
+									"        <th>Creation</th>",
+									"        <th>Updated</th>",
+									"        <th>Members Count</th>",
+									"        <th>Joined</th>",
+									"        <th>Joinable</th>",
+									"    </tr>",
+									"    <tr>",
+									"        <td>{{response.id}}</td>",
+									"        <td>{{response.owner_phone}}</td>",
+									"        <td>{{response.subject}}</td>",
+									"        <td>{{response.creation}}</td>",
+									"        <td>{{response.updated}}</td>",
+									"        <td>{{response.members_count}}</td>",
+									"        <td>{{response.joined}}</td>",
+									"        <td>{{response.joinable}}</td>",
+									"    </tr>",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return {response: pm.response.json()}",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/groups/{chat_id}",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups",
+								"{chat_id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "v1/wa/groups{chat_id}/history",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>ID</th>",
+									"        <th>Owner Phone</th>",
+									"        <th>Subject</th>",
+									"        <th>Creation</th>",
+									"        <th>Updated</th>",
+									"        <th>Members Count</th>",
+									"        <th>Joined</th>",
+									"        <th>Joinable</th>",
+									"    </tr>",
+									"    <tr>",
+									"        <td>{{response.id}}</td>",
+									"        <td>{{response.owner_phone}}</td>",
+									"        <td>{{response.subject}}</td>",
+									"        <td>{{response.creation}}</td>",
+									"        <td>{{response.updated}}</td>",
+									"        <td>{{response.members_count}}</td>",
+									"        <td>{{response.joined}}</td>",
+									"        <td>{{response.joinable}}</td>",
+									"    </tr>",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return {response: pm.response.json()}",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/groups/{chat_id}/history",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups",
+								"{chat_id}",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/groups/\"chat_id\"/members",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/wa/groups/\"chat_id\"/members",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"wa",
+								"groups",
+								"\"chat_id\"",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/wa/users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/users?country=\"COUNTRY\"",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "\"COUNTRY\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/wa/users/{MSISDN}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/users/\"MSISDN\"",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users",
+								"\"MSISDN\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/wa/users/{MSISDN}/owner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/users/\"MSISDN\"/owner",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users",
+								"\"MSISDN\"",
+								"owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/users/\"USER_ID\"/history",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/wa/users/\"USER_ID\"/history",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"wa",
+								"users",
+								"\"USER_ID\"",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/v1/wa/users/{MSISDN}/groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/users/\"MSISDN\"/groups/{history}",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users",
+								"\"MSISDN\"",
+								"groups",
+								"{history}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/messages/{msg_id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/messages/\"WA_MESSAGE_ID\"",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"messages",
+								"\"WA_MESSAGE_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/messages/{msg_id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/messages/\"WA_MESSAGE_ID\"",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"messages",
+								"\"WA_MESSAGE_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/messages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/messages",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/groups/{chat_id}/activity/{year/week/day}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/groups/\"CHAT_ID\"/activity/\"YEAR'/\"WEEK\"/\"DAY\"",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups",
+								"\"CHAT_ID\"",
+								"activity",
+								"\"YEAR'",
+								"\"WEEK\"",
+								"\"DAY\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/wa/{chat_id}/messages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "wa/groups/\"GROUP_ID@g.us\"/messages",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups",
+								"\"GROUP_ID@g.us\"",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/wa/tasks{/task_id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/wa/tasks(/task_id)",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"wa",
+								"tasks(",
+								"task_id)"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/tasks ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"joinlink\": \"\", \"description\": \"\", \"priority\": }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "wa/tasks",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/entities/\"chat_id\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/wa/entities/\"CHAT_ID\"",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"wa",
+								"entities",
+								"\"CHAT_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/entities/\"chat_id\"",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/wa/entities/\"CHAT_ID\"",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"wa",
+								"entities",
+								"\"CHAT_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/users/countries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/users/countries",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/groups/\"chat_id\"/members/former",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/groups/\"chat_id\"/members/former",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups",
+								"\"chat_id\"",
+								"members",
+								"former"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/groups/\"chat_id\"/members/countries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/groups/\"chat_id\"/members/countries",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups",
+								"\"chat_id\"",
+								"members",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/groups/\"chat_id\"/admins",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/groups/120363177828689922@g.us/admins",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups",
+								"120363177828689922@g.us",
+								"admins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/groups/\"chat_id\"/superadmins",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/groups/\"chat_id\"/superadmins",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"groups",
+								"\"chat_id\"",
+								"superadmins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/users/\"MSISDN\"/activity/year",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/users/\"MSISDN\"/activity/year",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users",
+								"\"MSISDN\"",
+								"activity",
+								"year"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/users/\"MSISDN\"/activity/day",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/users/\"MSISDN\"/activity/day",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users",
+								"\"MSISDN\"",
+								"activity",
+								"day"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/users/\"MSISDN\"/activity/groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/users/\"MSISDN\"/activity/groups",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users",
+								"\"MSISDN\"",
+								"activity",
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wa/users/\"MSISDN\"/activity/week",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "wa/users/\"MSISDN\"/activity/week",
+							"host": [
+								"wa"
+							],
+							"path": [
+								"users",
+								"\"MSISDN\"",
+								"activity",
+								"week"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tools",
+			"item": [
+				{
+					"name": "translate/translate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"lang\":\"LAN-LETTERS OF THE EXPECTED TRANSLATION  EXAMPLE:'en'\",\"text\":\"TEXT_IN_ANY_LANGUAGE\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "translate/translate",
+							"host": [
+								"translate"
+							],
+							"path": [
+								"translate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Discord",
+			"item": [
+				{
+					"name": "/discord/statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "discord/statistics",
+							"host": [
+								"discord"
+							],
+							"path": [
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/discord/guilds/\"COMMUNITY_ID\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer \"YOUR_ACCESS_TOKEN\"",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "discord/guilds/\"COMMUNITY_ID\"",
+							"host": [
+								"discord"
+							],
+							"path": [
+								"guilds",
+								"\"COMMUNITY_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "discord search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer \"YOUR_ACCESS_TOKEN\"",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "discord/guilds?search=\"KEYWORD\"",
+							"host": [
+								"discord"
+							],
+							"path": [
+								"guilds"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "\"KEYWORD\""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tiktok",
+			"item": [
+				{
+					"name": "tiktok/statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/statistics",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/hashtags",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/hashtags?search=\"KEYWORD\"",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"hashtags"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "\"KEYWORD\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/hashtags/\"\"HASHTAG_ID\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/hashtags/\"HASHTAG_ID\"",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"hashtags",
+								"\"HASHTAG_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/hashtags/\"\"HASHTAG_ID\"/activity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/hashtags/\"HASHTAG_ID\"/activity/\"DAY\"/\"MONTH/\"YEAR\"",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"hashtags",
+								"\"HASHTAG_ID\"",
+								"activity",
+								"\"DAY\"",
+								"\"MONTH",
+								"\"YEAR\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/users/\"USER_ID\"/follows",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/users/\"USER_ID\"/follows",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"users",
+								"\"USER_ID\"",
+								"follows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/users/\"USER_ID\"/friends",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/users/\"USER_ID\"/friends",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"users",
+								"\"USER_ID\"",
+								"friends"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/users/\"USER_ID\"/comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/users/\"USER_ID\"/comments",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"users",
+								"\"USER_ID\"",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/users/\"USER_ID\"/followers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/users/\"USER_ID\"/followers",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"users",
+								"\"USER_ID\"",
+								"followers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/posts/{\"POST_ID\"}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/posts/\"POST_ID\"",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"posts",
+								"\"POST_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/tasks/\"task_id\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "tiktok/tasks/\"TASK_ID\"",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"tasks",
+								"\"TASK_ID\""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/create/task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"task\":\"TASK_NAME\",\"description\":\"DESCRIPTION\",\"priority\":5}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "tiktok/create/task",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"create",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tiktok/delete/task/\"task_id\"",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN"
+							}
+						],
+						"url": {
+							"raw": "tiktok/delete/task/\"TASK_ID\"",
+							"host": [
+								"tiktok"
+							],
+							"path": [
+								"delete",
+								"task",
+								"\"TASK_ID\""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Threema",
+			"item": [
+				{
+					"name": "threema/statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/threema/statistics",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"threema",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "threema/search/id        (?q=\"user_id\")",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "threema/search/id?q=USER_ID",
+							"host": [
+								"threema"
+							],
+							"path": [
+								"search",
+								"id"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "USER_ID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "threema/search/msisdn                        (?q=\"MSISDN\")",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "127.0.0.1:8000/threema/search/msisdn?q=\"MSISDN\"",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"threema",
+								"search",
+								"msisdn"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "\"MSISDN\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "threema/users/\"USER_ID\"",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer YOUR_ACCESS_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "threema/users/\"USER_ID\"",
+							"host": [
+								"threema"
+							],
+							"path": [
+								"users",
+								"\"USER_ID\""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
